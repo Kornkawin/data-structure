@@ -39,6 +39,19 @@ public class MajorityElement {
     // with num at each bit.
     // That is, we can reconstruct the exact value of num
     // by combining the most frequent value (0 or 1) at each bit.
+    // AND (&):
+    //  0 & 0 == 0
+    //  1 & 0 == 0
+    //  0 & 1 == 0
+    //  1 & 1 == 1
+    // OR assignment (|=):
+    //  0 |= 0 == 0
+    //  1 |= 0 == 1
+    //  0 |= 1 == 1
+    //  1 |= 1 == 1
+    // Left Shift (<<):
+    //  1 << 1 == 10 == 2^1 (decimal-based)
+    //  1 << 5 == 100000 == 2^5 (decimal-based)
     private static int majorityElementBitMan(int[] nums) {
         int sol = 0;
         for (int i = 0; i < 31; i++) {
@@ -50,7 +63,10 @@ public class MajorityElement {
             }
 
             if (bitCount > nums.length/2) {
+                // At digit i, majority bit == 1
                 sol |= bit;
+            } else {
+                // At digit i, majority bit == 0
             }
         }
         return sol;

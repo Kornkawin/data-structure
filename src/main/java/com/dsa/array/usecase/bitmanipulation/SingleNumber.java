@@ -26,9 +26,14 @@ public class SingleNumber {
     // Time: O(n)
     // Space: O(1)
     // Bit Manipulation
-    // XOR:
-    // 1 ^= 1 == 0
-    // (1 ^= 2 ^= 1) == 2 == (1 ^= 1 ^= 2)
+    // XOR assignment (^=):
+    //  0 ^= 0 == 0
+    //  1 ^= 0 == 1
+    //  0 ^= 1 == 1
+    //  1 ^= 1 == 0
+    // So,
+    //  0 ^= 2 == 2
+    //  (1 ^= 2 ^= 1) == 2 == (1 ^= 1 ^= 2)
     private static int singleNumberBitMan(int[] nums) {
         int sol = 0;
         for (int i : nums) {
