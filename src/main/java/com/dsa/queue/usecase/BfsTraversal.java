@@ -13,7 +13,7 @@ import java.util.Queue;
  *          neighbor.visited = true
  *          Q.enqueue(neighbor)
  */
-public class BFSTraversal {
+public class BfsTraversal {
     // total number of nodes in the graph
     private int node;
     // adjacency list
@@ -22,7 +22,7 @@ public class BFSTraversal {
     private Queue<Integer> que;
 
     public static void main(String args[]) {
-        BFSTraversal graph = new BFSTraversal(6);
+        BfsTraversal graph = new BfsTraversal(6);
         // (edges are bidirectional in this example)
         graph.insertEdge(0, 1);
         graph.insertEdge(0, 3);
@@ -40,7 +40,7 @@ public class BFSTraversal {
         graph.BFS(0);
     }
 
-    BFSTraversal(int v) {
+    BfsTraversal(int v) {
         node = v;
         adj = new LinkedList[node];
         for (int i=0; i<v; i++) {
