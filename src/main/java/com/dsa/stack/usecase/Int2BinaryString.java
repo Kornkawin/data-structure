@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 public class Int2BinaryString {
     public static void main(String[] args) {
         int input = 21;
-        String sol = int2BinaryString(input);
+        String sol = int2BinaryStringRecursive(input);
         System.out.println(sol);
     }
 
@@ -30,5 +30,12 @@ public class Int2BinaryString {
             result += stack.pop();
         }
         return result;
+    }
+
+    private static String int2BinaryStringRecursive(int num) {
+        // base
+        if (num == 1) return String.valueOf(1);
+        // recursive
+        return int2BinaryString(num / 2) + num%2;
     }
 }
