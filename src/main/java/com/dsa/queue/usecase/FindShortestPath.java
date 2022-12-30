@@ -26,7 +26,6 @@ public class FindShortestPath {
         // search
         while (!que.isEmpty()) {
             Pos p = que.poll();
-            if (p.row == target.row && p.col == target.col) break;
             expand(map, que, p.row+1, p.col, map[p.row][p.col] + 1);
             expand(map, que, p.row-1, p.col, map[p.row][p.col] + 1);
             expand(map, que, p.row, p.col+1, map[p.row][p.col] + 1);
