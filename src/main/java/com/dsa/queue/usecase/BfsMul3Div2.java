@@ -42,6 +42,7 @@ public class BfsMul3Div2 {
         Node v = new Node(1, null);
         que.offer(v); set.add(v);
 
+        // search
         while (!que.isEmpty()) {
             v = que.poll();
             if (v.value == target)
