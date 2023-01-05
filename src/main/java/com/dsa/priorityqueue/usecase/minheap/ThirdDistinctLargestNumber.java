@@ -3,20 +3,21 @@ package com.dsa.priorityqueue.usecase.minheap;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 
-public class ThirdDistinctMaxNumber {
+public class ThirdDistinctLargestNumber {
 
     public static void main(String[] args) {
         int[] input = {2,2,3,1};
-        int sol = thirdMax(input);
+        int sol = thirdDistinctLargest(input);
         System.out.println(sol);
     }
 
-    private static int thirdMax(int[] nums) {
+    private static int thirdDistinctLargest(int[] nums) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         HashSet<Integer> taken = new HashSet<>();
 
         // Queueing
         for (int num: nums) {
+            // to make distinct numbers
             if (taken.contains(num)) continue;
 
             if (minHeap.size() == 3){
