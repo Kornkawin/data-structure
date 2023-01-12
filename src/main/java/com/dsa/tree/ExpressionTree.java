@@ -2,12 +2,12 @@ package com.dsa.tree;
 
 import java.util.*;
 
-public class Expression extends BinaryTree {
+public class ExpressionTree extends BinaryTree {
     private static final String OPERATORS = "+-*/^()";
     private static final int[] outsidePriority = {3,3,5,5,8,9,1};
     private static final int[] insidePriority = {3,3,5,5,7,0};
 
-    public Expression(String[] infix) {
+    public ExpressionTree(String[] infix) {
         List<String> postfix = infix2postfix(infix);
         Deque<Node> s = new ArrayDeque<>();
         for (String token : postfix) {
@@ -24,7 +24,7 @@ public class Expression extends BinaryTree {
     }
 
     // copy constructor
-    public Expression(Expression e) {
+    public ExpressionTree(ExpressionTree e) {
         root = copy(e.root);
     }
 
