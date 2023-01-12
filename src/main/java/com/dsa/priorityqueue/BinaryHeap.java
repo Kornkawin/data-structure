@@ -13,7 +13,7 @@ public class BinaryHeap implements PriorityQueue {
     }
 
     // Time: O(n log n)
-    // Too way slow
+    // Use fixUp -> Too way slow
 //    public BinaryHeap(Object[] arr) {
 //        for(Object e : arr) {
 //            offer(e);
@@ -21,12 +21,13 @@ public class BinaryHeap implements PriorityQueue {
 //    }
 
     // Time: O(n) = O(n) + O(n)
+    // Use fixDown -> Faster
     public BinaryHeap(Object[] arr) {
         // O(n)
         elements = new Object[arr.length];
         System.arraycopy(arr, 0, elements, 0, arr.length);
         size = arr.length;
-        // Math Proof: O(n)
+        // By Math Proof: O(n)
         for (int i=size-1; i>=0; i--) fixDown(i);
     }
 
