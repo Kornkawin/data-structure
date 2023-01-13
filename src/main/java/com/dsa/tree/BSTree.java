@@ -67,6 +67,7 @@ public class BSTree extends BinaryTree {
         root = add(root, e);
     }
 
+    // don't add duplicate data
     protected Node add(Node r, Object e) {
         if (r == null) {
             size++;
