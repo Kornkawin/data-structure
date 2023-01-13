@@ -6,5 +6,7 @@ public class test {
         ExpressionTreeTest.expressionTreeTest();
         System.out.println();
         HuffmanTreeTest.huffmanTreeTest();
+        System.out.println();
+        BSTreeTest.bsTreeTest();
     }
 }
