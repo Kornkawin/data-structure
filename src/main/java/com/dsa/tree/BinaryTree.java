@@ -12,6 +12,12 @@ public class BinaryTree {
             this.right = r;
         }
 
+        protected Node(Object e) {
+            this.element = e;
+            this.left = null;
+            this.right = null;
+        }
+
         protected boolean isLeaf() {
             return left == null && right == null;
         }
@@ -41,7 +47,7 @@ public class BinaryTree {
         if (r == null) return null;
         Node leftTree = copy(r.left);
         Node rightTree = copy(r.right);
-        return new Node(r, leftTree, rightTree);
+        return new Node(r.element, leftTree, rightTree);
     }
 
     public void preOrder(Visitor v) {

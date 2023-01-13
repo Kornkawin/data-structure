@@ -17,7 +17,7 @@ public class ExpressionTree extends BinaryTree {
                 Node node = new Node(token, left, right);
                 s.push(node);
             } else {
-                s.push(new Node(token, null, null));
+                s.push(new Node(token));
             }
         }
         root = s.pop();
@@ -44,6 +44,65 @@ public class ExpressionTree extends BinaryTree {
         else if (r.element.equals("/")) return vLeft / vRight;
         else if (r.element.equals("^")) return Math.pow(vLeft, vRight);
         else throw new IllegalStateException();
+    }
+
+    public void diff() {
+        root = diff(root);
+    }
+
+    private Node diff(Node r) {
+        if (r == null) return null;
+        String s = (String) r.element;
+        if (r.isLeaf()) {
+            r.element = (s.equals("x")) ? "1" : "0";
+        } else {
+            if(s.equals("+") || s.equals("-")) r = diffSumMinus(r);
+            else if(s.equals("*")) r = diffProduct(r);
+            else if(s.equals("/")) r = diffDiv(r);
+            else if(s.equals("^")) r = diffPower(r);
+            else throw new IllegalStateException();
+        }
+        return r;
+    }
+
+    private Node diffSumMinus(Node r) {
+        r.left = diff(r.left);
+        r.right = diff(r.right);
+        return r;
+    }
+
+    private Node diffProduct(Node r) {
+        Node u = copy(r.left);
+        Node v = copy(r.right);
+        Node du = diff(r.left);
+        Node dv = diff(r.right);
+        Node t1 = new Node("*", u, dv);
+        Node t2 = new Node("*", v, du);
+        return new Node("+", t1, t2);
+    }
+
+    private Node diffPower(Node r) {
+        // support only x^C where C is a constant
+        Node u = copy(r.left);
+        Node c = copy(r.right);
+        Node c1 = new Node("-", copy(r.right), new Node("1"));
+        Node du = diff(r.left);
+        Node leftTree = new Node("*", c, new Node("^", u, c1));
+        return new Node("*", leftTree, du);
+    }
+
+    private Node diffDiv(Node r) {
+        // u(x)/v(x)
+        Node u = copy(r.left);
+        Node v = copy(r.right);
+        Node v2 = copy(r.right);
+        Node du = diff(r.left);
+        Node dv = diff(r.right);
+        Node t1 = new Node("*", v, du);
+        Node t2 = new Node("*", u, dv);
+        Node t3 = new Node("-", t1, t2);
+        Node t4 = new Node("^", v2, new Node("2"));
+        return new Node("/", t3, t4);
     }
 
     // ref: stack use case

@@ -35,6 +35,6 @@ public class HuffmanTree extends BinaryTree implements Comparable<Object> {
 
     @Override
     public String toString() {
-        return "HuffmanTree [root=" + root + "]";
+        return "HuffmanTree [root=" + root.element + "]";
     }
 }
