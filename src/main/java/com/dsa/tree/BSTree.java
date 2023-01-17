@@ -128,4 +128,29 @@ public class BSTree extends BinaryTree {
             }
         });
     }
+
+    // Time: O(1)
+    protected Node rotateLeftChild(Node r) {
+        Node newRoot = r.left;
+        r.left = newRoot.right;
+        newRoot.right = r;
+        return newRoot;
+    }
+
+    protected Node rotateRightChild(Node r) {
+        Node newRoot = r.right;
+        r.right = newRoot.left;
+        newRoot.left = r;
+        return newRoot;
+    }
+
+    protected Node rotateLeftRightChild(Node r) {
+        r.left = rotateRightChild(r.left);
+        return rotateLeftChild(r);
+    }
+
+    protected Node rotateRightLeftChild(Node r) {
+        r.right = rotateLeftChild(r.right);
+        return rotateRightChild(r);
+    }
 }
