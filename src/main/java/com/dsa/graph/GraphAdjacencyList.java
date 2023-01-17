@@ -17,6 +17,7 @@ public class GraphAdjacencyList implements Graph {
         }
     }
 
+    // Time: O(1)
     @Override
     public void addEdge(int source, int destination){
         if (source < nVertices && destination < nVertices){
