@@ -46,4 +46,15 @@ public class HashTable implements Set {
         // depend on algorithm designs
         return x.hashCode() % table.length;
     }
+
+    private int hash(int x) {
+        // another hash function example
+        x = ~x + (x << 15);
+        x = x ^ (x >>> 11);
+        x = x + (x << 3);
+        x = x ^ (x >>> 5);
+        x = x + (x << 10);
+        x = x ^ (x >>> 16);
+        return x;
+    }
 }
